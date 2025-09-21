@@ -15,6 +15,15 @@ app.use(cors({
 
 
 }))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.get('/health-check', (req, res) => {
+  res.status(200).send({
+    time: new Date().toISOString(),
+    msg: "OK"
+  })
+})
 const port = process.env.PORT || 5000
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
