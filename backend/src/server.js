@@ -10,8 +10,10 @@ dotenv.config()
 app.use(helmet())
 app.use(morgan('dev'))
 app.use(cors({
+  origin: (process.env.ALLOWED_ORIGIN || '').split(",").map(s => s.trim()).filter(Boolean) || "*",
   credentials: true,
-  origin: process.env.ALLOWED_ORIGIN
+
+
 }))
 const port = process.env.PORT || 5000
 app.listen(port, () => {
