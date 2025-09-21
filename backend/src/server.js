@@ -12,8 +12,6 @@ app.use(morgan('dev'))
 app.use(cors({
   origin: (process.env.ALLOWED_ORIGIN || '').split(",").map(s => s.trim()).filter(Boolean) || "*",
   credentials: true,
-
-
 }))
 
 app.use(bodyParser.json())
